@@ -10,5 +10,11 @@
 #  updated_at :datetime         not null
 #
 class Article < ApplicationRecord
-  validates :title, presence: true
+  # validates :content, presence: true
+  # validates :title, presence: true
+  # validates :slug, presence: true
+
+  validates_presence_of :content, :title, :slug
+  validates :slug, uniqueness: true
+
 end
