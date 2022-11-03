@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  # explicit and basic
+  # get '/articles', to: 'articles#index'
+
+  # by default gives us all CRUD routes out of the box (before `only`)
+  resources :articles, only: [:index, :show]
+
 end
