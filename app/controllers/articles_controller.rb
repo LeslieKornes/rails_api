@@ -2,7 +2,11 @@ class ArticlesController < ApplicationController
 
   def index
     # status: :ok not necessary here but is explicit :shrug:
-    render json: Article.all, status: :ok
+    render json: serializer.new(Article.all), status: :ok
+  end
+
+  def serializer
+    ArticleSerializer
   end
 
   def show
