@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
 
   def index
-    render json: {}
+    # status: :ok not necessary here but is explicit :shrug:
+    render json: Article.all, status: :ok
   end
 
   def show
