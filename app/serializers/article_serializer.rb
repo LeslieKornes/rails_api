@@ -1,6 +1,6 @@
 class ArticleSerializer
   include JSONAPI::Serializer
 
-  set_type :articles
+  set_type :article
   attributes :title, :content, :slug
 end
