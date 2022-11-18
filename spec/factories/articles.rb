@@ -13,6 +13,8 @@ FactoryBot.define do
   factory :article do
     title { "Sample article" }
     content { "Sample content" }
-    slug { "sample-article-slug" }
+    # no longer works with unique validation
+    # slug { "sample-article-slug" }
+    slug { "#{(0...10).map { ('a'..'z').to_a[rand(26)] }.join}" }
   end
 end

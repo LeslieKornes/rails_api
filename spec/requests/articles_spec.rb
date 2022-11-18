@@ -23,5 +23,15 @@ RSpec.describe ArticlesController do
         )
       end
     end
+
+    it 'returns articles in the proper order' do
+      # important to older article first bc expectation is based on _id_
+      # maybe the wrong expectation? **update - added recent scope tested below
+      older_article = create(:article, created_at: 1.hour.ago)
+      newer_article = create(:article)
+      get '/articles'
+      ids = json_data.map { |d| d[:id].to_i }
+      expect(ids).to eq([newer_article.id, older_article.id])
+    end
   end
 end

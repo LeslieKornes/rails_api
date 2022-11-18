@@ -17,4 +17,6 @@ class Article < ApplicationRecord
   validates_presence_of :content, :title, :slug
   validates :slug, uniqueness: true
 
+  scope :recent, -> { order(created_at: :desc ) }
+
 end
