@@ -11,10 +11,14 @@
 #
 FactoryBot.define do
   factory :article do
-    title { "Sample article" }
+    # title { "Sample article" }
+    sequence(:title) { |n| "Sample article #{n}" }
+
     content { "Sample content" }
+    
     # no longer works with unique validation
     # slug { "sample-article-slug" }
-    slug { "#{(0...10).map { ('a'..'z').to_a[rand(26)] }.join}" }
+    # !!! per https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#uniqueness
+    sequence(:slug) { |n| "sample-article-#{n}" }
   end
 end
